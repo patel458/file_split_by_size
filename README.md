@@ -26,3 +26,10 @@ The trade-off: part files are named with a fixed 6-digit zero-padded index (`pre
 An empty source file produces a single empty part file. This keeps the split reversible — `join_files` on that one empty part reproduces the empty original. If `split_file` wrote zero parts for an empty input, `join_files` would have nothing to read and would refuse the empty list.
 
 `chunk_size` must be positive. Zero and negative values raise `ValueError` before any I/O happens.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
