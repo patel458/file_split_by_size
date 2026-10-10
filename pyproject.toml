@@ -1,6 +1,6 @@
 [project]
 name = "file-split-by-size"
-version = "0.1.1"
+version = "0.1.2"
 description = "Splits a binary file into chunks no larger than a given byte size, writing part files with index suffixes."
 requires-python = ">=3.10"
 dependencies = []
